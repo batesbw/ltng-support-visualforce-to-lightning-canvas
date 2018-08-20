@@ -34,6 +34,9 @@
 			serverUrl: "<%= INSTANCE_URL %>"
 		});
 		
+		/*
+		disable jsforce queries for now
+		@TODO: update example to include
 		jsf.query ("select id, name from account limit 1", function( err, records ){
 			console.log( "query returned" );
 			if( !err ){
@@ -41,6 +44,7 @@
 			}
 			debugger;
 		});
+		*/
 		
 		toastBtn.onclick = function( evt ){
 			console.log( 'closeBtn called' );debugger;
