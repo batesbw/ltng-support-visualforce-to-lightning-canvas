@@ -1,3 +1,41 @@
+# [TEMP] Setting up
+
+**1.** - Download the Salesforce Repository for the demo:
+
+[https://github.com/SalesforceCloudServices/ltng-support-visualforce-to-lightning/](https://github.com/SalesforceCloudServices/ltng-support-visualforce-to-lightning/)
+
+**2.** - cd into the dx directory of that project and run `sfdx force:source:push`
+
+**3.** - assign the demo permissionSet (to run the demo) - `sfdx force:user:permset:assign -n ltng_LightningToVisualforceDemoParticipant`
+
+**4.** - create a heroku app for this project at [https://heroku.com](https://heroku.com)
+
+ex: `heroku create`
+
+**5.** - create the following heroku config settings for the heroku app:
+
+<table>
+	<tr>
+		<th>Config</th><th>Description</th><th>Example</th>
+	</tr>
+	<tr>
+		<td>CONSUMER_KEY</td>
+		<td>The Consumer Key for the Connected App: ltng_DemoHerokuNodeJS_CanvasApp</td>
+		<td>3MVG9U_dUptXGpYI4288SBcTP2X...</td>
+	</tr>
+	<tr>
+		<td>CONSUMER_SECRET</td>
+		<td>The Consumer Secret for the Connected App: ltng_DemoHerokuNodeJS_CanvasApp</td>
+		<td>12345678....</td>
+	</tr>
+	<tr>
+		<td>EXAMPLE_SIGNED_REQUEST</td>
+		<td>Leave blank in production or replace with the post Signed Request</td>
+		<td>9Rpl6rE7R2bSNjoSfYdERk8nffmgtKQNhr5U/5eSJPI=.eyJjb250ZXh0Ijp7InVzZXIiOnsibGFuZ3V....</td>
+	</tr>
+</table>
+
+
 # node-js-getting-started
 
 note: cloned from - https://github.com/heroku/node-js-getting-started.git
