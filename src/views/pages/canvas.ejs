@@ -13,6 +13,20 @@
 	
 	client = <%- JSON.stringify( USER_INFO.client ) %>;
 	
+	/**
+	 * Handle the greeting from lightning
+	 **/
+	function handleGreeting(evt){
+		console.log('heroku heard greeting');
+		
+		var message = 'Message from Lightning';
+		if(evt && evt.message){
+			message += ':' + evt.message;
+		}
+
+		document.getElementById('greeting').innerText = message;
+	}
+
 	Sfdc.canvas( function(){
 		var loggedIn = Sfdc.canvas.oauth.loggedin();
 		var token = "<%= TOKEN %>";
@@ -25,6 +39,10 @@
 		// Sfdc.canvas.client.subscribe(request.client, [
 		//	{name : 'mynamespace.statusChanged', onData : handler1}
 		// ]);
+
+		Sfdc.canvsa.client.subscribe(client,[
+			{name:'greeting', onData: handleGreeting}
+		]);
 
 		//debugger;
 		
@@ -53,7 +71,7 @@
 		
 		toastBtn.onclick = function( evt ){
 			console.log( 'closeBtn called' );debugger;
-			Sfdc.canvas.client.publish( client, { name:"showToast", payload: { status:"SUCCESS" }});
+			Sfdc.canvas.client.publish( client, { name:"showToast", payload: { status:"SUCCESS", message:"Message from Heroku" }});
 		}
 		
 		msgIn.setAttribute( "value", "<%= SIGNED_REQUEST %>" );
@@ -70,7 +88,7 @@ https://jsforce.github.io/document/
 <div class='lds'>
 	<div class='slds-grid'>
 		<div class='slds-col slds-size_1-of-1 slds-p-around_small'>
-			<h1 class='slds-text-heading_medium'>Hello - <%= USERNAME %>.</h1>
+			<h1 id='greeting' class='slds-text-heading_medium'>Hello - <%= USERNAME %>.</h1>
 			<div class='datatable' style='padding:10px;'>
 				<table class='slds-table slds-table--bordered slds-table--cell-buffer'>
 					<thead>
