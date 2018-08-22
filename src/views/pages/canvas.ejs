@@ -52,14 +52,19 @@
 			console.error( "unable to set user info context" ); console.error( err );
 		}
 
+		/*
+		Can support queries on heroku using the connection through jsForce.
+		(Or through back and forth postMessages)
+
+		To leverage jsForce connections, you must add in a CORS address
+		for the heroku endpoint.
+		https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/extend_code_cors.htm
+
 		jsf = new jsforce.Connection({
 			sessionId: "<%= TOKEN %>",
 			serverUrl: "<%= INSTANCE_URL %>"
 		});
 		
-		/*
-		disable jsforce queries for now
-		@TODO: update example to include
 		jsf.query ("select id, name from account limit 1", function( err, records ){
 			console.log( "query returned" );
 			if( !err ){
@@ -70,7 +75,7 @@
 		*/
 		
 		toastBtn.onclick = function( evt ){
-			console.log( 'closeBtn called' );debugger;
+			console.log( 'toastBtn called' );
 			Sfdc.canvas.client.publish( client, { name:"showToast", payload: { status:"SUCCESS", message:"Message from Heroku" }});
 		}
 		
