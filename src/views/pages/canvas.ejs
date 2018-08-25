@@ -76,7 +76,13 @@
 		
 		toastBtn.onclick = function( evt ){
 			console.log( 'toastBtn called' );
-			Sfdc.canvas.client.publish( client, { name:"showToast", payload: { status:"SUCCESS", message:"Message from Heroku" }});
+			
+			var messageToSend = document.getElementById('messageText').value;
+			if (!messageToSend) {
+				messageToSend = document.getElementById('messageText').placeholder;
+			}
+			
+			Sfdc.canvas.client.publish( client, { name:"showToast", payload: { status:"SUCCESS", message:messageToSend }});
 		}
 		
 		msgIn.setAttribute( "value", "<%= SIGNED_REQUEST %>" );
@@ -118,15 +124,21 @@ https://jsforce.github.io/document/
 			</div>
 			<div class='slds-form--stacked'>
 				<div class="slds-form-element">
-					<label class="slds-form-element__label" for="text-input-01">Your signed request</label>
+					<label class="slds-form-element__label" for="msgIn">Your signed request</label>
 					<div class="slds-form-element__control">
 						<input type="text" id="msgIn" class="slds-input" placeholder="Message goes here" />
 					</div>
 				</div>
 				<div class='slds-form-element'>
-					<label class="slds-form-element__label" for="text-input-01">Signed Request Contents</label>
+					<label class="slds-form-element__label" for="userInfoContext">Signed Request Contents</label>
 					<div class="slds-form-element__control">
 						<textarea id='userInfoContext' class='slds-textarea' style='height:300px' ></textarea>
+					</div>
+				</div>
+				<div class='slds-form-element'>
+					<label class="slds-form-element__label" for="messageText">Message to send to Lightning</label>
+					<div class="slds-form-element__control">
+						<textarea id='messageText' class='slds-input' placeholder="Hello <%= USER_INFO.context.user.firstName %>!" ></textarea>
 					</div>
 				</div>
 				<div class='slds-form-element'>
