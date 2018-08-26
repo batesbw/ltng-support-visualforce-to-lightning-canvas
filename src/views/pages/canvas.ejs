@@ -82,6 +82,7 @@
 				messageToSend = document.getElementById('messageText').placeholder;
 			}
 			
+			console.info('Heroku Canvas now posting message of type: showToast');
 			Sfdc.canvas.client.publish( client, { name:"showToast", payload: { status:"SUCCESS", message:messageToSend }});
 		}
 		
