@@ -101,6 +101,46 @@ https://jsforce.github.io/document/
 	<div class='slds-grid'>
 		<div class='slds-col slds-size_1-of-1 slds-p-around_small'>
 			<h1 id='greeting' class='slds-text-heading_medium'>Hello - <%= USERNAME %>.</h1>
+			<div class='slds-form--stacked'>
+				<div class='slds-form-element'>
+					<label class="slds-form-element__label" for="messageText">Message to send to Lightning</label>
+					<div class="slds-form-element__control">
+						<textarea id='messageText' class='slds-input' placeholder="Hello <%= USER_INFO.context.user.firstName %>!" ></textarea>
+					</div>
+				</div>
+				<div class='slds-form-element'>
+					<button id='toastBtn' type='button' class='slds-button slds-button--brand'>Send Canvas Message</button>
+				</div>
+			</div>
+			<div class='slds-form--stacked slds-m-top_medium'>
+				<div class='slds-form-element'>
+					<div class="slds-text-heading_medium">Signed Request Info</div>
+					<p class="slds-m-top_small">
+						The following information was sent in the signed request in the format of: (encrypted package).(signed signature) <br />
+						(note the period between the package and signature)
+					</p>
+					<p class="slds-m-top_small">
+						As the Canvas App (in Salesforce) and the Canvas App (Heroku) both know the shared secret,
+						they can both decrypt the package and can verify the package was untouched if the signature matches.<br />
+						(Other options are available)
+					</p>
+					<p class="slds-m-top_small">
+						For more information please see <a href='https://developer.salesforce.com/docs/atlas.en-us.platform_connect.meta/platform_connect/canvas_app_signed_req_authentication.htm'>Signed Request Authentication in the Canvas App Developer Guide</a>
+					</p>
+				</div>
+				<div class="slds-form-element">
+					<label class="slds-form-element__label" for="msgIn">Your signed request</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="msgIn" class="slds-input" placeholder="Message goes here" />
+					</div>
+				</div>
+				<div class='slds-form-element'>
+					<label class="slds-form-element__label" for="userInfoContext">Signed Request Contents</label>
+					<div class="slds-form-element__control">
+						<textarea id='userInfoContext' class='slds-textarea' style='height:300px' ></textarea>
+					</div>
+				</div>
+			</div>
 			<div class='datatable' style='padding:10px;'>
 				<table class='slds-table slds-table--bordered slds-table--cell-buffer'>
 					<thead>
@@ -122,29 +162,6 @@ https://jsforce.github.io/document/
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class='slds-form--stacked'>
-				<div class="slds-form-element">
-					<label class="slds-form-element__label" for="msgIn">Your signed request</label>
-					<div class="slds-form-element__control">
-						<input type="text" id="msgIn" class="slds-input" placeholder="Message goes here" />
-					</div>
-				</div>
-				<div class='slds-form-element'>
-					<label class="slds-form-element__label" for="userInfoContext">Signed Request Contents</label>
-					<div class="slds-form-element__control">
-						<textarea id='userInfoContext' class='slds-textarea' style='height:300px' ></textarea>
-					</div>
-				</div>
-				<div class='slds-form-element'>
-					<label class="slds-form-element__label" for="messageText">Message to send to Lightning</label>
-					<div class="slds-form-element__control">
-						<textarea id='messageText' class='slds-input' placeholder="Hello <%= USER_INFO.context.user.firstName %>!" ></textarea>
-					</div>
-				</div>
-				<div class='slds-form-element'>
-					<button id='toastBtn' type='button' class='slds-button slds-button--brand'>Send Canvas Message</button>
-				</div>
 			</div>
 		</div>
 	</div>
