@@ -1,4 +1,14 @@
-# [TEMP] Setting up
+# Overview
+
+This is an example Node.JS canvas endpoint to demonstrate how to leverage Canvas Apps within Lightning Experience.
+
+This allows for listening and dispatching canvas messages with Lightning Experience, so the end user experience is seamless.
+
+![Screenshot](docs/images/LightningToVF_ToHeroku.gif)
+
+For more information, [please see the accompanying Salesforce project](https://github.com/SalesforceCloudServices/ltng-support-visualforce-to-lightning#communicate-with-canvas-apps)
+
+# Setting up
 
 **1.** - Download the Salesforce Repository for the demo:
 
